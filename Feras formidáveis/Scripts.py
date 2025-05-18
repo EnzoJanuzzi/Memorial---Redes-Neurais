@@ -83,7 +83,7 @@ def funcao_objetivo_senha_size(candidato, senha_verdadeira):
         num_letra_candidato = ord(letra_candidato)
         num_letra_senha = ord(letra_senha) # converte letra para número
         distancia += abs(num_letra_candidato - num_letra_senha)
-    distancia += abs(len(candidato) - len(senha_verdadeira))*62
+    distancia += abs(len(candidato) - len(senha_verdadeira))*75
 
     return distancia
 
@@ -171,7 +171,6 @@ def mutacao_salto_tamanho(populacao, chance_de_mutacao, valores_possiveis):
 
     """
     for individuo in populacao:
-      teste = 0
       if random.random() < chance_de_mutacao:
           gene = random.randint(0, len(individuo))
           if gene == 0:
@@ -179,8 +178,9 @@ def mutacao_salto_tamanho(populacao, chance_de_mutacao, valores_possiveis):
           elif gene == len(individuo):
             individuo.pop(gene-1)
           else:
-            teste = random.randint(-1,1)
-            if teste == -1:
+            # sorteia se vai adicionar ou remover o gene
+            fator_transicao = random.choice([-1, 1])
+            if fator_transicao == -1:
               individuo.pop(gene)
             else:
               individuo.insert(gene,random.choice(valores_possiveis))
