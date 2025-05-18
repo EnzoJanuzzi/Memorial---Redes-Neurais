@@ -172,12 +172,13 @@ def mutacao_salto_tamanho(populacao, chance_de_mutacao, valores_possiveis):
     """
     for individuo in populacao:
       if random.random() < chance_de_mutacao:
-          gene = random.randint(0, len(individuo))
-          if gene == 0:
-            individuo.insert(0,random.choice(valores_possiveis))
-          elif gene == len(individuo):
-            individuo.pop(gene-1)
-          else:
+        # condições de contorno
+        if len(individuo) == 1:
+          individuo.insert(0,random.choice(valores_possiveis))
+        elif len(individuo) == 30:
+          individuo.pop(-1)
+
+        else:
             # sorteia se vai adicionar ou remover o gene
             fator_transicao = random.choice([-1, 1])
             if fator_transicao == -1:
