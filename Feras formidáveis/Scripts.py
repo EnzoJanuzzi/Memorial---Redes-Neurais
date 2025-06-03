@@ -192,7 +192,7 @@ def mutacao_salto_tamanho(populacao, chance_de_mutacao, valores_possiveis):
             individuo.insert(gene,random.choice(valores_possiveis))
 
 def mutacao_elemento(populacao, chance_de_mutacao, valores_possiveis):
-    """Realiza mutação simples
+    """Realiza mutação dos elementos no problema da liga
 
     Args:
       populacao: lista contendo os indivíduos do problema
@@ -204,7 +204,6 @@ def mutacao_elemento(populacao, chance_de_mutacao, valores_possiveis):
     for individuo in populacao:
         if random.random() < chance_de_mutacao:
             gene = random.randint(0, len(individuo) - 1)
-            valor_gene = individuo[gene]
             valores_sorteio = set(valores_possiveis) - set(individuo)
             individuo[gene] = random.choice(list(valores_sorteio))
 
