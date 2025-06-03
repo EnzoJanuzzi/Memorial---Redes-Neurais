@@ -333,4 +333,24 @@ def funcao_objetivo_pop_liga(populacao, elementos_possiveis, dic_precos, xyz):
     for individuo in populacao:
         fitness.append(funcao_objetivo_liga(individuo, elementos_possiveis, dic_precos, xyz))
         
-    return fitness   
+    return fitness
+
+###############################################################################
+#                           Ligas ternárias leves                             #
+###############################################################################
+
+def funcao_objetivo_liga_leve(candidato, elementos_possiveis, dic_precos, dic_pesos, xyz):
+    densidade_valor = 0
+ 
+    for elemento, qtd in zip(candidato, xyz):
+      densidade_valor += (dic_precos[elemento]/dic_pesos[elemento]) * qtd
+ 
+    return densidade_valor
+ 
+def funcao_objetivo_pop_liga_leve(populacao, elementos_possiveis, dic_precos, dic_pesos, xyz):
+    fitness = []
+   
+    for individuo in populacao:
+        fitness.append(funcao_objetivo_liga_leve(individuo, elementos_possiveis, dic_precos, dic_pesos, xyz))
+       
+    return fitness  
