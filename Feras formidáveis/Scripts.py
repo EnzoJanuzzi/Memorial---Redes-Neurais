@@ -56,9 +56,9 @@ def selecao_torneio_max(populacao, fitness, tamanho_torneio):
             indice_individuo = populacao.index(individuo)
             fitness_sorteados.append(fitness[indice_individuo])
 
-        min_fitness = max(fitness_sorteados)
-        indice_min_fitness = fitness_sorteados.index(min_fitness)
-        individuo_selecionado = sorteados[indice_min_fitness]
+        max_fitness = max(fitness_sorteados)
+        indice_max_fitness = fitness_sorteados.index(max_fitness)
+        individuo_selecionado = sorteados[indice_max_fitness]
 
         selecionados.append(individuo_selecionado)
 
